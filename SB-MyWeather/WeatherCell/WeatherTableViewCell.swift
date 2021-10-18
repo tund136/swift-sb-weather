@@ -25,4 +25,8 @@ class WeatherTableViewCell: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "WeatherTableViewCell", bundle: nil)
     }
+    
+    func configure(with model: DailyWeatherEntry) {
+        
+    }
 }
