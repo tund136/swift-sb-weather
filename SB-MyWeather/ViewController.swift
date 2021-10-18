@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupLocation() 
+        setupLocation()
     }
     
     // Location
@@ -63,7 +63,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let longitude = currentLocation.coordinate.longitude
         let latitude = currentLocation.coordinate.latitude
         
-        print("\(longitude) | \(latitude)")
+        let url = "https://api.darksky.net/forecast/ddcc4ebb2a7c9930b90d9e59bda0ba7a/\(latitude),\(longitude)?exclude=[flags,minutely]"
+        
+        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+            // Validation
+            
+            // Convert data to models/some object
+            
+            // Update user interface
+        })
     }
     
     // Table
