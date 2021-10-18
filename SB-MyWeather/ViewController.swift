@@ -74,9 +74,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             // Convert data to models/some object
+            var json: WeatherResponse?
+            do {
+                json = try JSONDecoder().decode(WeatherResponse.self, from: data)
+            } catch {
+                print("Error: \(error)")
+            }
+            
+            guard let result = json
+            else {
+                return
+            }
+            
+            print(result.currently.summary)
             
             // Update user interface
-        })
+            
+        }).resume()
     }
     
     // Table
