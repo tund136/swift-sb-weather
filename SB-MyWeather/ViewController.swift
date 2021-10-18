@@ -6,16 +6,21 @@
 //
 
 import UIKit
+import CoreLocation
 
 // Location: CoreLocation
 // Table View
 // Custom Cell: Collection View
 // API - Request to get the data
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     @IBOutlet var table: UITableView!
     
     var models = [Weather]()
+    
+    let locationManager = CLLocationManager()
+    
+    var currentLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +32,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         table.delegate = self
         table.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupLocation() 
+    }
+    
+    // Location
+    func setupLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !locations.isEmpty, currentLocation == nil {
+            currentLocation = locations.first
+            locationManager.stopUpdatingLocation()
+            requestWeatherForLocation()
+        }
+    }
+    
+    func requestWeatherForLocation() {
+        guard let currentLocation = currentLocation
+        else {
+            return
+        }
+
+        let longitude = currentLocation.coordinate.longitude
+        let latitude = currentLocation.coordinate.latitude
+        
+        print("\(longitude) | \(latitude)")
     }
     
     // Table
