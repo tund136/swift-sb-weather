@@ -56,6 +56,8 @@
 		AD12412F271DBF5D00A7EECF /* SB-MyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				AD124145271DC1FC00A7EECF /* HourlyCollectionCell */,
+				AD124144271DC1EC00A7EECF /* WeatherCell */,
 				AD124130271DBF5D00A7EECF /* AppDelegate.swift */,
 				AD124132271DBF5D00A7EECF /* SceneDelegate.swift */,
 				AD124134271DBF5D00A7EECF /* ViewController.swift */,
@@ -65,6 +67,20 @@
 				AD12413E271DBF6100A7EECF /* Info.plist */,
 			);
 			path = "SB-MyWeather";
+			sourceTree = "<group>";
+		};
+		AD124144271DC1EC00A7EECF /* WeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WeatherCell;
+			sourceTree = "<group>";
+		};
+		AD124145271DC1FC00A7EECF /* HourlyCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HourlyCollectionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
