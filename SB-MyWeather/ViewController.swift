@@ -67,6 +67,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
             // Validation
+            guard let data = data, error == nil
+            else {
+                print("Something went wrong!")
+                return
+            }
             
             // Convert data to models/some object
             
